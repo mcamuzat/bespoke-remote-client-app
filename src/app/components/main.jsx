@@ -55,6 +55,9 @@ const ControlSlide = React.createClass({
   stop: function() {
     this.props.setSlideActive(null);
   },
+  flopoke_finger1_start: function() {
+    socket.emit('bespoke-action', 'flopoke-finger1-start');
+  },
   render: function() {
     if (this.props.slideActive == null) {
       return false;
@@ -76,6 +79,13 @@ const ControlSlide = React.createClass({
             fullWidth={true}
             label="Suivant"
             onTouchTap={this.next}
+          />
+          <br /><br />
+          <RaisedButton
+            ref="b"
+            fullWidth={true}
+            label="Whaaaat ??"
+            onTouchTap={this.flopoke_finger1_start}
           />
         </div>
         <div>
