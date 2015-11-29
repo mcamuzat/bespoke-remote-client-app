@@ -6,7 +6,7 @@ const AppBar = require('material-ui/lib/app-bar');
 const ThemeManager = require('material-ui/lib/styles/theme-manager');
 const LightRawTheme = require('material-ui/lib/styles/raw-themes/light-raw-theme');
 const Colors = require('material-ui/lib/styles/colors');
-const socket = require('socket.io-client')('http://skill-informatique.com:8000');
+const socket = require('socket.io-client')('http://localhost:8000');
 
 const SlideItem = React.createClass({
   getInitialState: function() {
