@@ -46,6 +46,17 @@ const SlideList = React.createClass({
 });
 
 const ControlSlide = React.createClass({
+  getInitialState: function() {
+    return {
+      note: null
+    };
+  },
+  componentWillMount: function() {
+    var that = this;
+    socket.on('client-flopoke-note', function(objNote) {
+      that.setState({note: objNote.note});
+    });
+  },
   next: function() {
     socket.emit('bespoke-action', 'next');
   },
@@ -88,8 +99,8 @@ const ControlSlide = React.createClass({
             onTouchTap={this.flopoke_finger1_start}
           />
         </div>
+        <div style={{margin: 20, height: 180, overflowY: 'auto'}}>{this.state.note}</div>
         <div>
-          <br /><br /><br /><br /><br /><br />
           <RaisedButton ref="c" fullWidth={true} label="Stop" onTouchTap={this.stop} />
         </div>
       </div>
