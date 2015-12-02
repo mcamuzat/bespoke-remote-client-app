@@ -133,6 +133,9 @@ const Main = React.createClass({
       this.setState({slides: this.state.slides});
     }
   },
+  removeAllSlides() {
+    this.state.slides = [];
+  },
   setSlideActive(slide) {
     if (slide !== null) {
       socket.emit('setRemoteUser', slide.token);
@@ -150,6 +153,7 @@ const Main = React.createClass({
     var that = this;
 
     socket.on('client-list-users', function(users) {
+      that.removeAllSlides();
       users.map(function(user) {
         that.addSlide({token: user});
       });
